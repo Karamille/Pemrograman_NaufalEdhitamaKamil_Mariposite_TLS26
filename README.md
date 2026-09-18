@@ -34,26 +34,3 @@ Program enkripsi teks menggunakan metode pergeseran huruf (*Caesar Cipher* dinam
    * Huruf saat ini dikonversi ke indeks $0-25$, ditambahkan nilai `geser`, lalu diproses dengan modulo $26$ agar pergeseran tetap berada dalam rentang $A-Z$.
 4. **Format Output:** Hasil enkripsi ditutup dengan karakter `'\0'` dan ditampilkan ke layar.
 
-### Ringkasan Logika Kode C++
-```cpp
-#include <iostream>
-
-using namespace std;
-
-int main() {
-    char kata[1005], kata_sandi[1005];
-    if (!(cin >> kata)) return 0;
-
-    int nomor = 0;
-    while (kata[nomor] != '\0') nomor++;
-
-    kata_sandi[0] = kata[0];
-    for (int i = 1; i < nomor; ++i) {
-        int geser = kata[i - 1] - 'A' + 1;
-        kata_sandi[i] = 'A' + (kata[i] - 'A' + geser) % 26;
-    }
-    kata_sandi[nomor] = '\0';
-
-    cout << kata_sandi << "\n";
-    return 0;
-}
